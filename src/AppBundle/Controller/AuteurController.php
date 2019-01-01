@@ -46,8 +46,8 @@ class AuteurController extends FOSRestController
     {
        
         $data = new Auteur();
-        $data->setNom('ahmed POST');
-        $data->setEmail('ahmedbns@gmail.com');
+        $data->setNom('sbaa');
+        $data->setEmail('ahmedsbaa@gmail.com');
         $em = $this->getDoctrine()->getManager();
         $em->persist($data);
         $em->flush();
@@ -66,12 +66,12 @@ class AuteurController extends FOSRestController
         {
             return new View("NULL VALUES ARE NOT ALLOWED", Response::HTTP_NOT_CREATED);
         }
-        $data->setNom('Put ahmed');
-        $data->setEmail('test@gmail.com');
+        $data->setNom('ahmed');
+        $data->setEmail('ahmedsbaa@gmail.com');
         $em = $this->getDoctrine()->getManager();
         $em->persist($data);
         $em->flush();
-        return new View("author update Successfully", Response::HTTP_CREATED);
+        return new View("author updated ", Response::HTTP_CREATED);
     }
 
 
@@ -83,8 +83,7 @@ class AuteurController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Auteur::class);
         $result = $repo->find($id);
-        /*$query = $repo->createQuery('Select l,l.auteur_id From AppBundle:Livre l WHERE l.id=18');
-        $result = $query->getResult();*/
+       
         if ($result === null) 
             {return new View("there are no authors with this id", Response::HTTP_NOT_FOUND);}
         return $result;

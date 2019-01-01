@@ -13,14 +13,14 @@ class LoadFixtures implements FixtureInterface
 		for ($i = 0; $i < 20; $i++) {
 			$Livre = new Livre();
 			$Livre->setTitre('ahmed'.$i); 
-			$Livre->setDescriptif('bns'.$i);
-			$Livre->setISBN('testFixture'.$i);
+			$Livre->setDescriptif('sbaa'.$i);
+			$Livre->setISBN('text'.$i);
 			$Livre->setDateedition(new \DateTime());
 			$manager->persist($Livre);
 			//auteuuuuuuuuur
 			$Auteur = new Auteur();
 			$Auteur->setNom('auteur'.$i); 
-			$Auteur->setEmail('ahmedbns@gmail.com'.$i);
+			$Auteur->setEmail('ahmedsbaa@gmail.com'.$i);
 			$manager->persist($Auteur);
 		}
 		$manager->flush();

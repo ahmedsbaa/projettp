@@ -35,7 +35,7 @@ class LivreController extends FOSRestController
         $data = new Livre();
         $data->setTitre('ahmed');
         $data->setDescriptif('descriptif');
-        $data->setISBN('ahmed bns');
+        $data->setISBN('ahmed sbaa');
         $data->setDateedition(new \DateTime());
         $em = $this->getDoctrine()->getManager();
         $em->persist($data);
@@ -55,9 +55,9 @@ class LivreController extends FOSRestController
         {
             return new View("NULL VALUES ARE NOT ALLOWED", Response::HTTP_NOT_CREATED);
         }
-        $data->setTitre('Put Titre');
-        $data->setDescriptif('Put descriptif');
-        $data->setISBN('Put ahmed bns');
+        $data->setTitre('Titre');
+        $data->setDescriptif('descriptif');
+        $data->setISBN('ahmed sbaa');
         $data->setDateedition(new \DateTime());
         $em = $this->getDoctrine()->getManager();
         $em->persist($data);
