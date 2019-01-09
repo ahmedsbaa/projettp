@@ -17,7 +17,7 @@ class LoadFixtures implements FixtureInterface
 			$Livre->setISBN('text'.$i);
 			$Livre->setDateedition(new \DateTime());
 			$manager->persist($Livre);
-			//auteuuuuuuuuur
+			
 			$Auteur = new Auteur();
 			$Auteur->setNom('auteur'.$i); 
 			$Auteur->setEmail('ahmedsbaa@gmail.com'.$i);

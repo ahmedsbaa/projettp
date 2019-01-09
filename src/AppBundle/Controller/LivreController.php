@@ -66,17 +66,39 @@ class LivreController extends FOSRestController
     }
 
     /**
-    * @Rest\Get("/book/{titre}")
+    * @Rest\Get("/book/{s}")
     */
-    public function searchAction($titre)
+    public function getActionBytitre($s)
     {
         
         $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository(Livre::class);
-        $result = $repo->findOneByTitre($titre);
-        if ($result === null) 
-            {return new View("there are no books with this title", Response::HTTP_NOT_FOUND);}
-        return $result;
+        $result = $em->getRepository(Livre::class)
+            ->createQueryBuilder('b')
+            ->where('b.titre LIKE :titre')
+            ->setParameter('titre', '%' . $s . '%')
+            ->getQuery()
+            ->getResult();
+        if ($result === null)
+            return new View("there are no books", Response::HTTP_NOT_FOUND);
+            return $result;
+    }
+
+/**
+    * @Rest\Get("/books/titre={s}/ranger")
+    */
+    public function getActionBytitreDesc($s)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $result = $em->getRepository(Livre::class)
+            ->createQueryBuilder('b')
+            ->where('b.titre LIKE :titre')
+            ->orderBy('b.titre', 'DESC')
+            ->setParameter('titre', '%' . $s . '%')
+            ->getQuery()
+            ->getResult();
+        if ($result === null)
+            return new View("there are no books", Response::HTTP_NOT_FOUND);
+            return $result;
     }
 
     /**
